@@ -1,0 +1,49 @@
+<div fxLayout="column" >
+  <div fxLayout="row">
+    <mat-toolbar fxLayout="row">
+      <span fxFlex fxLayoutAlign="center" fxFlexOffset="20">May the force be with you!</span>
+      <span fxFlex="20" fxLayoutAlign="center"> Score: {{gameService.score[0]}} : {{gameService.score[1]}}</span>
+      <button mat-mini-fab (click)="gameService.resetScore()">
+        <mat-icon fontIcon="replay"></mat-icon>
+      </button>
+    </mat-toolbar>
+  </div>
+  <br>
+  <div fxLayout="row">
+    <div fxFlex="" fxLayoutAlign="center center">
+      <app-card-component
+        [data]="gameService.selectedData[0]"
+      ></app-card-component>
+    </div>
+
+    <div fxFlex="20" fxLayout="column">
+      <div fxFlex style="background-color: rgb(228, 8, 8)"></div>
+      <div fxFlex fxLayoutAlign="center center">
+        <p>
+          <mat-button-toggle-group [(ngModel)]="gameService.resource">
+            <mat-button-toggle value="people">People</mat-button-toggle>
+            <mat-button-toggle value="starship">Starship</mat-button-toggle>
+          </mat-button-toggle-group>
+        </p>
+      </div>
+      <div fxFlex fxLayoutAlign="center center">
+        <img
+          src="assets/images/animation_500_leuqmvhq.gif"
+          style="width: 20rem"
+          alt=""
+        />
+      </div>
+    </div>
+    <div fxFlex="" fxLayoutAlign="center center">
+      <app-card-component
+        [data]="gameService.selectedData[1]"
+      ></app-card-component>
+    </div>
+  </div>
+
+  <div fxLayout="row" fxLayoutAlign="center center">
+    <div fxFlex="nogrow">
+      <button mat-fab extended (click)="play()" [disabled]="gameService.isLoading$ | async">Let's Play</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+<div class="tp-wrapper" [ngClass]="{'beating' : gameService.isLoading$ | async}">
+  <div class="tp-box" (click)="toggleFlip()" [@flipState]="flip">
+    <div class="tp-box__side tp-box__front">
+      <mat-card class="card" fxLayout="column" style="background-color: black">
+        <mat-card-content fxFlex fxFill style="padding: 0;">
+          <div class="swbackground" fxLayoutAlign="center center">
+            <img class="swlogo" src="assets/images/star-wars-logo.svg" />
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div class="tp-box__side tp-box__back">
+      <mat-card class="card" [ngClass]="{'winner': data?.winner}" fxLayout="column">
+        <mat-card-header fxFlex>
+          <mat-card-title>
+            {{data?.name}}
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content fxFlex fxFill>
+
+          {{ data != null && isPeople(data) ? "Mass: " + data.mass : "Crew: " + data?.crew}}
+        </mat-card-content>
+        <mat-card-footer fxFlex fxFlex="nogrow">
+          <!-- <mat-progress-bar mode="indeterminate"></mat-progress-bar> -->
+        </mat-card-footer>
+      </mat-card>
+    </div>
+  </div>
+</div>

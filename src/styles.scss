@@ -1,1 +1,30 @@
 /* You can add global styles to this file, and also import other style files */
+
+@use '@angular/material' as mat;
+// @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.mat-background{
+ background-color: #303030
+}
+
+
+
+
+@include mat.core();
+
+$my-primary: mat.define-palette(mat.$amber-palette, 500);
+//$my-accent: mat.define-palette(mat.$red-palette, A200, A100, A400);
+$my-accent: mat.define-palette(mat.$amber-palette, 500, A100, A400);
+
+$my-theme: mat.define-dark-theme((
+ color: (
+   primary: $my-primary,
+   accent: $my-accent,
+ ),
+ typography: mat.define-typography-config(),
+ density: 0,
+));
+
+@include mat.all-component-themes($my-theme);
